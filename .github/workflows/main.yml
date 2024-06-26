@@ -5,6 +5,11 @@ on:
   push:
     branches:
     - master
+
+env:
+  AZURE_WEBAPP_NAME: casetrue
+  AZURE_WEBAPP_PACKAGE_PATH: "./publish"
+    
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -24,5 +29,13 @@ jobs:
         run: dotnet build ./dotnet-webapi-demo-01-christenzarif.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish ./dotnet-webapi-demo-01-christenzarif.sln --configuration Release --no-build
+        run: dotnet publish ./dotnet-webapi-demo-01-christenzarif.sln --configuration Release --no-build --output '${{env.AZURE_WEBAPP_PACKAGE_PATH}}'
+      
+      - name: Deployment
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{env.AZURE_WEBAPP_NAME}}
+          publish-profile: ${{secrets.AZURE_PUBLISH_PROFILE}}
+          package: "${{env.AZURE_WEBAPP_PACKAGE_PATH}}"
+          
         

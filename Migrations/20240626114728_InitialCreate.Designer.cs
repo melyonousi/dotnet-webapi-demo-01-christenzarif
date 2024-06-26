@@ -12,7 +12,7 @@ using dotnet_webapi_demo_01_christenzarif.Models;
 namespace dotnet_webapi_demo_01_christenzarif.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240626095831_InitialCreate")]
+    [Migration("20240626114728_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

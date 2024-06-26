@@ -30,6 +30,7 @@ namespace dotnet_webapi_demo_01_christenzarif
                                   policy =>
                                   {
                                       policy.WithOrigins("http://casetrue.runasp.net",
+                                                          "http://casetrue.bsite.net",
                                                           "https://casetrue.bsite.net");
                                   });
             });
@@ -37,11 +38,11 @@ namespace dotnet_webapi_demo_01_christenzarif
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
+            //}
 
             app.UseCors(MyAllowSpecificOrigins);
 

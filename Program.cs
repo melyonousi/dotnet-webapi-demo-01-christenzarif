@@ -31,7 +31,9 @@ namespace dotnet_webapi_demo_01_christenzarif
                                   {
                                       policy.WithOrigins("http://casetrue.runasp.net",
                                                           "http://casetrue.bsite.net",
-                                                          "https://casetrue.bsite.net");
+                                                          "https://casetrue.bsite.net",
+                                                          "https://casetrue.azurewebsites.net",
+                                                          "http://casetrue.azurewebsites.net");
                                   });
             });
 

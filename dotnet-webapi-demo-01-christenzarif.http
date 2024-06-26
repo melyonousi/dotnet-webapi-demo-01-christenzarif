@@ -1,6 +1,0 @@
-@dotnet_webapi_demo_01_christenzarif_HostAddress = http://localhost:5062
-
-GET {{dotnet_webapi_demo_01_christenzarif_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

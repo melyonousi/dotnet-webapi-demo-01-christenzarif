@@ -18,6 +18,7 @@ namespace dotnet_webapi_demo_01_christenzarif.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false, computedColumnSql: "SUBSTRING(Email, 1, CHARINDEX('@', Email) - 1)"),
                     Salary = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<DateTime>(type: "datetime2", nullable: false),

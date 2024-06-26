@@ -18,7 +18,7 @@ jobs:
           dotnet-version: '8.0.x'
           
       - name: Restore
-        run: dotnet restore ./CurrentTimeService.sln
+        run: dotnet restore ./dotnet-webapi-demo-01-christenzarif.sln
 
       - name: Build
         run: dotnet build ./dotnet-webapi-demo-01-christenzarif.sln --configuration Release --no-restore

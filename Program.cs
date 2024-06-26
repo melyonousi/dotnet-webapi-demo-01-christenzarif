@@ -19,16 +19,11 @@ namespace dotnet_webapi_demo_01_christenzarif
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddSwaggerGen(c => 
-            c.MapType<DateOnly>(() => new OpenApiSchema
-            {
-                Type = "string",
-                Format = "date"
-            }));
 
             // Custom Services
             builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dotnet_webapi_demo_01_christenzarif")));
             builder.Services.AddScoped<IEmployee, EmployeeRepository>();
+
 
             var app = builder.Build();
 

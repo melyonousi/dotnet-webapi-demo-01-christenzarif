@@ -7,8 +7,9 @@ namespace dotnet_webapi_demo_01_christenzarif.Repositories.Interface
     {
         Task<List<Employee>> Get();
         Task<Employee> Get(Guid id);
+        Task<Employee> Get(string email);
         Task<Employee> Create(Employee employee);
         Task<Employee> Update(Employee employee);
-        Task<Employee> Delete(Guid id);
+        Task<bool> Delete(Guid id);
     }
 }

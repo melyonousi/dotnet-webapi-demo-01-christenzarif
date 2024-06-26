@@ -12,8 +12,8 @@ using dotnet_webapi_demo_01_christenzarif.Models;
 namespace dotnet_webapi_demo_01_christenzarif.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240624222134_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240625203530_AddComputedUserName")]
+    partial class AddComputedUserName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,17 +35,41 @@ namespace dotnet_webapi_demo_01_christenzarif.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("Age")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Age")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(18,4)");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComputedColumnSql("SUBSTRING(Email, 1, CHARINDEX('@', Email) - 1)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Employees");
                 });

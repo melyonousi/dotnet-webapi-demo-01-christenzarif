@@ -1,6 +1,7 @@
 ﻿using dotnet_webapi_demo_01_christenzarif.Models;
 using dotnet_webapi_demo_01_christenzarif.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace dotnet_webapi_demo_01_christenzarif.Repositories.Implement
 {
@@ -15,36 +16,63 @@ namespace dotnet_webapi_demo_01_christenzarif.Repositories.Implement
 
         public async Task<Employee> Create(Employee employee)
         {
-            if (employee is null)
+            if (employee is not null)
             {
-                return null!;
+                var emp = await _dataContext.AddAsync<Employee>(employee);
+                await _dataContext.SaveChangesAsync();
+                return employee;
             }
-            var emp = await _dataContext.AddAsync<Employee>(employee);
-            await _dataContext.SaveChangesAsync();
-            return emp is not null ? employee : null!;
+            return null!;
         }
 
-        public Task<Employee> Delete(Guid id)
+        public async Task<bool> Delete(Guid guid)
         {
-            throw new NotImplementedException();
+            Employee? employee = await _dataContext.Employees.FindAsync(guid);
+            if (employee is not null)
+            {
+                _dataContext.Employees.Remove(employee);
+                await _dataContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
 
         public async Task<List<Employee>> Get()
         {
-            var employees = await _dataContext.Employees.ToListAsync();
+            List<Employee> employees = await _dataContext.Employees.ToListAsync();
             return employees is not null ? employees : null!;
         }
 
         public async Task<Employee> Get(Guid guid)
         {
-            var employee = await _dataContext.Employees.FindAsync(guid);
+            Employee? employee = await _dataContext.Employees.FindAsync(guid);
             return employee is not null ? employee : null!;
 
         }
 
-        public Task<Employee> Update(Employee employee)
+        public async Task<Employee> Get(string username)
         {
-            throw new NotImplementedException();
+            Employee? employee = await _dataContext.Employees.FirstOrDefaultAsync(opt => opt.UserName == username);
+            return employee is not null ? employee : null!;
+        }
+
+        public async Task<Employee> Update(Employee employee)
+        {
+            Employee? emp = await _dataContext.Employees.FindAsync(employee.Id);
+            if (emp is not null)
+            {
+                emp.Name = employee.Name;
+                emp.Address = employee.Address;
+                emp.Email = employee.Email;
+                emp.Salary = employee.Salary;
+                emp.Age = employee.Age;
+                emp.UpdatedAt = DateTime.Now;
+                _dataContext.Employees.Update(emp);
+                await _dataContext.SaveChangesAsync();
+                return emp;
+            }
+
+            return null!;
         }
     }
 }

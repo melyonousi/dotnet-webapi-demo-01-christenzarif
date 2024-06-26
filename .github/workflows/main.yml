@@ -21,8 +21,8 @@ jobs:
         run: dotnet restore ./CurrentTimeService.sln
 
       - name: Build
-        run: dotnet build ./CurrentTimeService.sln --configuration Release --no-restore
+        run: dotnet build ./dotnet-webapi-demo-01-christenzarif.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish ./CurrentTimeService.sln --configuration Release --no-build
+        run: dotnet publish ./dotnet-webapi-demo-01-christenzarif.sln --configuration Release --no-build
         

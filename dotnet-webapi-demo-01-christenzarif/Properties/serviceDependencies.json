@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:dotnet_webapi_demo_01_christenzarif",
+      "dynamicId": null
+    }
+  }
+}

@@ -12,8 +12,8 @@ using dotnet_webapi_demo_01_christenzarif.Models;
 namespace dotnet_webapi_demo_01_christenzarif.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240630082800_InitialMigrations")]
-    partial class InitialMigrations
+    [Migration("20240630152816_mssql.onprem_migration_657")]
+    partial class mssqlonprem_migration_657
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

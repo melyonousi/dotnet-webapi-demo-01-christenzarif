@@ -1,4 +1,3 @@
-
 using dotnet_webapi_demo_01_christenzarif.Models;
 using dotnet_webapi_demo_01_christenzarif.Repositories.Implement;
 using dotnet_webapi_demo_01_christenzarif.Repositories.Interface;
@@ -11,9 +10,8 @@ namespace dotnet_webapi_demo_01_christenzarif
     {
         public static void Main(string[] args)
         {
-            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
             var builder = WebApplication.CreateBuilder(args);
-
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -54,7 +52,7 @@ namespace dotnet_webapi_demo_01_christenzarif
                 app.UseSwaggerUI();
             //}
 
-            app.UseCors(MyAllowSpecificOrigins);
+            app.UseHttpsRedirection();
 
             app.UseAuthorization();
 

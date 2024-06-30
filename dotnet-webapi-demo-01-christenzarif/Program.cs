@@ -21,19 +21,7 @@ namespace dotnet_webapi_demo_01_christenzarif
             builder.Services.AddSwaggerGen();
 
             // Custom Services
-            // database connection
-            var dbHost = Environment.GetEnvironmentVariable("DB_SERVER");
-            var dbName = Environment.GetEnvironmentVariable("DB_DATABASE");
-            var dbUserId = Environment.GetEnvironmentVariable("DB_USER");
-            var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
-            //var connectionString = $"Server=sql.bsite.net\\MSSQL2016;Database=casetrue_;Persist Security Info=False;User ID=casetrue_;Password=FMyQPzl06jgSrS5;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=true;Connection Timeout=30;";
-            var connectionString = builder.Configuration?.GetConnectionString("dotnet_webapi_demo_01_christenzarif")?
-                .Replace("{DB_SERVER}", Environment.GetEnvironmentVariable("DB_SERVER"))
-                .Replace("{DB_DATABASE}", Environment.GetEnvironmentVariable("DB_DATABASE"))
-                .Replace("{DB_USER}", Environment.GetEnvironmentVariable("DB_USER"))
-                .Replace("{DB_PASSWORD}", Environment.GetEnvironmentVariable("DB_PASSWORD"));
-
-            builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dotnet_webapi_demo_01_christenzarif")));
             builder.Services.AddScoped<IEmployee, EmployeeRepository>();
             builder.Services.AddCors(options =>
             {

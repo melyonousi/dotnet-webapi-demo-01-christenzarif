@@ -7,6 +7,7 @@
     <RootNamespace>dotnet_webapi_demo_01_christenzarif</RootNamespace>
     <UserSecretsId>4fb743b3-55c3-492a-8018-8dcb5c32e408</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>

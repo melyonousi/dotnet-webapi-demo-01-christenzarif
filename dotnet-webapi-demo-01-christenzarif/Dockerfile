@@ -9,11 +9,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["dotnet-webapi-demo-01-christenzarif/dotnet-webapi-demo-01-christenzarif.csproj", "dotnet-webapi-demo-01-christenzarif/"]
-RUN dotnet restore "./dotnet-webapi-demo-01-christenzarif/dotnet-webapi-demo-01-christenzarif.csproj"
+COPY ["dotnet-webapi-demo-01-christenzarif.csproj", "./"]
+RUN dotnet restore "dotnet-webapi-demo-01-christenzarif.csproj"
 COPY . .
-WORKDIR "/src/dotnet-webapi-demo-01-christenzarif"
-RUN dotnet build "./dotnet-webapi-demo-01-christenzarif.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/."
+RUN dotnet build "dotnet-webapi-demo-01-christenzarif.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release

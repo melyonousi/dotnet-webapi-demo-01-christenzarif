@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace dotnet_webapi_demo_01_christenzarif.Migrations
 {
     /// <inheritdoc />
-    public partial class mssqlonprem_migration_657 : Migration
+    public partial class InitialMigrate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

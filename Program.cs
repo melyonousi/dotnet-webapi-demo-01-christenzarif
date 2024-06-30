@@ -33,7 +33,9 @@ namespace dotnet_webapi_demo_01_christenzarif
                                                           "http://casetrue.bsite.net",
                                                           "https://casetrue.bsite.net",
                                                           "https://casetrue.azurewebsites.net",
-                                                          "http://casetrue.azurewebsites.net");
+                                                          "http://casetrue.azurewebsites.net",
+                                                          "https://dotnet-webapi-demo-01-christenzarif.onrender.com",
+                                                          "http://dotnet-webapi-demo-01-christenzarif.onrender.com");
                                   });
             });
 

@@ -1,9 +1,0 @@
-version: '3.4'
-
-services:
-  dotnet-webapi-demo-01-christenzarif:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      - ASPNETCORE_HTTP_PORTS=8080
-    ports:
-      - "8080"

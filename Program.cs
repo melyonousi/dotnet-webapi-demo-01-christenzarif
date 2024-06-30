@@ -27,7 +27,7 @@ namespace dotnet_webapi_demo_01_christenzarif
             var dbName = Environment.GetEnvironmentVariable("DB_NAME");
             var dbUserId = Environment.GetEnvironmentVariable("USER_ID");
             var dbPassword = Environment.GetEnvironmentVariable("SA_PASSWORD");
-            var connectionString = $"Server={dbHost};Database={dbName};Persist Security Info=False;User ID={dbUserId};Password={dbPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            var connectionString = $"Server=tcp:casetrue.database.windows.net,1433;Database=casetrue;Persist Security Info=False;User ID=casetrue;Password=kiY8v6IVq~4&lG;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
             builder.Services.AddScoped<IEmployee, EmployeeRepository>();
             builder.Services.AddCors(options =>

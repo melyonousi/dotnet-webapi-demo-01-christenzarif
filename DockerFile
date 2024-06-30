@@ -19,10 +19,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-# Set environment variables
-ENV DB_SERVER=tcp:casetrue.database.windows.net,1433
-ENV DB_DATABASE=casetrue
-ENV DB_USER=casetrue
-ENV DB_PASSWORD=kiY8v6IVq~4&lG
+# Set environment variable to Production
+ENV ASPNETCORE_ENVIRONMENT Production
 
 ENTRYPOINT ["dotnet", "dotnet-webapi-demo-01-christenzarif.dll"]

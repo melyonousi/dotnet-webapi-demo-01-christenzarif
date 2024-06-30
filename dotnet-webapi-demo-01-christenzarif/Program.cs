@@ -22,7 +22,13 @@ namespace dotnet_webapi_demo_01_christenzarif
             builder.Services.AddSwaggerGen();
 
             // Custom Services
-            builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dotnet_webapi_demo_01_christenzarif")));
+            // database connection
+            var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+            var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+            var dbUserId = Environment.GetEnvironmentVariable("USER_ID");
+            var dbPassword = Environment.GetEnvironmentVariable("SA_PASSWORD");
+            var connectionString = $"Server={dbHost};Database=${dbName};Persist Security Info=False;User ID=${dbUserId};Password=${dbPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
             builder.Services.AddScoped<IEmployee, EmployeeRepository>();
             builder.Services.AddCors(options =>
             {

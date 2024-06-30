@@ -1,0 +1,33 @@
+version: '3.4'
+
+networks:
+  christinazarifnetwork:
+
+services:
+  christinazarifappdb:
+    container_name: christinazarifdb
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 8002:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=kiY8v6IVq~4&lG
+    networks:
+      - christinazarifnetwork
+  dotnet-webapi-demo-01-christenzarif:
+    container_name: christenzarif
+    image: ${DOCKER_REGISTRY-}dotnetwebapidemo01christenzarif
+    build:
+      context: dotnet-webapi-demo-01-christenzarif
+      dockerfile: Dockerfile
+    ports:
+      - 8001:8080
+    depends_on:
+      - christinazarifappdb
+    environment:
+      - DB_HOST=tcp:casetrue.database.windows.net,1433
+      - DB_NAME=casetrue
+      - DB_USER_ID=casetrue
+      - DB_SA_PASSWORD=kiY8v6IVq~4&lG
+    networks:
+      - christinazarifnetwork

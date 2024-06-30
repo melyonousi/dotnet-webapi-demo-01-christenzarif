@@ -1,7 +1,7 @@
 # dotnet-webapi-demo-01-christenzarif
 
 ```bash
-bashMicrosoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore
 ```
 
 ```bash
@@ -13,5 +13,5 @@ Microsoft.EntityFrameworkCore.Tools
 ```
 
 ```bash
- Microsoft.AspNetCore.Mvc.NewtonsoftJson
+Microsoft.AspNetCore.Mvc.NewtonsoftJson
 ```

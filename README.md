@@ -1,7 +1,17 @@
 # dotnet-webapi-demo-01-christenzarif
 
-Microsoft.EntityFrameworkCore
-Microsoft.EntityFrameworkCore.SqlServer
-Microsoft.EntityFrameworkCore.Tools
+```bash
+bashMicrosoft.EntityFrameworkCore
+```
 
-Microsoft.AspNetCore.Mvc.NewtonsoftJson
+```bash
+Microsoft.EntityFrameworkCore.SqlServer
+```
+
+```bash
+Microsoft.EntityFrameworkCore.Tools
+```
+
+```bash
+ Microsoft.AspNetCore.Mvc.NewtonsoftJson
+```

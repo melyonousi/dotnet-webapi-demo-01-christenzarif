@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  dotnet-webapi-demo-01-christenzarif:
-    image: ${DOCKER_REGISTRY-}dotnetwebapidemo01christenzarif
-    build:
-      context: .
-      dockerfile: dotnet-webapi-demo-01-christenzarif/Dockerfile

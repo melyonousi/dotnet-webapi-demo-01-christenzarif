@@ -5,8 +5,6 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-webapi-demo-01-christenzarif", "dotnet-webapi-demo-01-christenzarif\dotnet-webapi-demo-01-christenzarif.csproj", "{E004E08A-42A8-49A4-AFFD-EF17554A4921}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9F9E35C2-97AA-412D-B335-E05780B4372B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{E004E08A-42A8-49A4-AFFD-EF17554A4921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E004E08A-42A8-49A4-AFFD-EF17554A4921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E004E08A-42A8-49A4-AFFD-EF17554A4921}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F9E35C2-97AA-412D-B335-E05780B4372B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F9E35C2-97AA-412D-B335-E05780B4372B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F9E35C2-97AA-412D-B335-E05780B4372B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F9E35C2-97AA-412D-B335-E05780B4372B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

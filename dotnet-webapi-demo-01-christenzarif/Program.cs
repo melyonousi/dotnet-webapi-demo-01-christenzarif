@@ -27,7 +27,7 @@ namespace dotnet_webapi_demo_01_christenzarif
             builder.Services.AddScoped<IDepartment, DepartmentRepository>();
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
+                options.AddPolicy(MyAllowSpecificOrigins,
                                   policy =>
                                   {
                                       policy.WithOrigins("http://casetrue.runasp.net",
@@ -55,8 +55,9 @@ namespace dotnet_webapi_demo_01_christenzarif
             //}
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(); // wwwroot
 
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseAuthorization();
 
 

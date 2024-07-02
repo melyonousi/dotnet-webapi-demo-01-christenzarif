@@ -12,8 +12,8 @@ using dotnet_webapi_demo_01_christenzarif.Models;
 namespace dotnet_webapi_demo_01_christenzarif.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240630173051_InitialMigrate")]
-    partial class InitialMigrate
+    [Migration("20240702015411_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,25 @@ namespace dotnet_webapi_demo_01_christenzarif.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("dotnet_webapi_demo_01_christenzarif.Models.Department", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ManagerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Departments");
+                });
 
             modelBuilder.Entity("dotnet_webapi_demo_01_christenzarif.Models.Employee", b =>
                 {
@@ -42,6 +61,9 @@ namespace dotnet_webapi_demo_01_christenzarif.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<Guid?>("DepartmentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -68,10 +90,26 @@ namespace dotnet_webapi_demo_01_christenzarif.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentId");
+
                     b.HasIndex("Email")
                         .IsUnique();
 
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("dotnet_webapi_demo_01_christenzarif.Models.Employee", b =>
+                {
+                    b.HasOne("dotnet_webapi_demo_01_christenzarif.Models.Department", "Department")
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentId");
+
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("dotnet_webapi_demo_01_christenzarif.Models.Department", b =>
+                {
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

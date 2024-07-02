@@ -44,5 +44,9 @@ namespace dotnet_webapi_demo_01_christenzarif.Models
 
         [Display(Name = "Update At")]
         public DateTime UpdatedAt { get; set; }
+
+        [ForeignKey("Department")]
+        public Guid? DepartmentId { get; set; }
+        public virtual Department? Department { get; set; }
     }
 }

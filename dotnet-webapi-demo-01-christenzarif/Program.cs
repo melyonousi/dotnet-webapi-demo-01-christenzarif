@@ -1,6 +1,7 @@
 using dotnet_webapi_demo_01_christenzarif.Models;
 using dotnet_webapi_demo_01_christenzarif.Repositories.Implement;
 using dotnet_webapi_demo_01_christenzarif.Repositories.Interface;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
@@ -23,6 +24,7 @@ namespace dotnet_webapi_demo_01_christenzarif
             // Custom Services
             builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dotnet_webapi_demo_01_christenzarif")));
             builder.Services.AddScoped<IEmployee, EmployeeRepository>();
+            builder.Services.AddScoped<IDepartment, DepartmentRepository>();
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy(name: MyAllowSpecificOrigins,
@@ -38,6 +40,11 @@ namespace dotnet_webapi_demo_01_christenzarif
                                   });
             });
 
+            builder.Services.Configure<FormOptions>(opt =>
+            {
+                opt.MultipartBodyLengthLimit = 50 * 1024 * 1024;
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -48,6 +55,7 @@ namespace dotnet_webapi_demo_01_christenzarif
             //}
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 

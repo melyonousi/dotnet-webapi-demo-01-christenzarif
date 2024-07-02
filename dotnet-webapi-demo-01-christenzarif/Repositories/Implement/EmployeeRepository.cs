@@ -1,4 +1,5 @@
-﻿using dotnet_webapi_demo_01_christenzarif.Models;
+﻿using dotnet_webapi_demo_01_christenzarif.DTO;
+using dotnet_webapi_demo_01_christenzarif.Models;
 using dotnet_webapi_demo_01_christenzarif.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -47,7 +48,6 @@ namespace dotnet_webapi_demo_01_christenzarif.Repositories.Implement
         {
             Employee? employee = await _dataContext.Employees.FindAsync(guid);
             return employee is not null ? employee : null!;
-
         }
 
         public async Task<Employee> Get(string username)
@@ -73,6 +73,18 @@ namespace dotnet_webapi_demo_01_christenzarif.Repositories.Implement
             }
 
             return null!;
+        }
+
+        public async Task<EmployeeWithDepartmentNameDTO> GetEmployeeByIdWithDepartmentName(Guid guid)
+        {
+            Employee? employee = await _dataContext.Employees.Include(dpt => dpt.Department).FirstOrDefaultAsync(opt => opt.Id == guid);
+            EmployeeWithDepartmentNameDTO EmpDept = new EmployeeWithDepartmentNameDTO
+            {
+                Id = employee!.Id,
+                Name = employee.Name,
+                DepartmentName = employee.Department!.Name,
+            };
+            return employee is not null ? EmpDept : null!;
         }
     }
 }

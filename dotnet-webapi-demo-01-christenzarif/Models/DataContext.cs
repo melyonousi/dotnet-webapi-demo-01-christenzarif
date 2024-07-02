@@ -9,6 +9,7 @@ namespace dotnet_webapi_demo_01_christenzarif.Models
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

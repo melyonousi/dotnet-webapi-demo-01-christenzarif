@@ -3,6 +3,7 @@ using dotnet_webapi_demo_01_christenzarif.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
+using dotnet_webapi_demo_01_christenzarif.DTO;
 
 namespace dotnet_webapi_demo_01_christenzarif.Controllers
 {
@@ -67,6 +68,13 @@ namespace dotnet_webapi_demo_01_christenzarif.Controllers
             }
 
             return BadRequest(ModelState);
+        }
+
+        [HttpGet("{id:guid:required}/department")]
+        public async Task<ActionResult<EmployeeWithDepartmentNameDTO>> GetEmployeeByIdWithDepartment(Guid id)
+        {
+            var employee = await _employee.GetEmployeeByIdWithDepartmentName(id);
+            return employee is not null ? Ok(employee) : NotFound($"employee with id: \"{id}\" not found");
         }
     }
 }

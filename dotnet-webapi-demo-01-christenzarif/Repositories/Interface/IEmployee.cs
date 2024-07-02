@@ -1,4 +1,5 @@
-﻿using dotnet_webapi_demo_01_christenzarif.Models;
+﻿using dotnet_webapi_demo_01_christenzarif.DTO;
+using dotnet_webapi_demo_01_christenzarif.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dotnet_webapi_demo_01_christenzarif.Repositories.Interface
@@ -11,5 +12,7 @@ namespace dotnet_webapi_demo_01_christenzarif.Repositories.Interface
         Task<Employee> Create(Employee employee);
         Task<Employee> Update(Employee employee);
         Task<bool> Delete(Guid id);
+
+        Task<EmployeeWithDepartmentNameDTO> GetEmployeeByIdWithDepartmentName(Guid id);
     }
 }

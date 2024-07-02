@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML Consumer | ASP.NET Core Web Api</title>
+</head>
+<body>
+
+    <h1>ASP.Net Core Web API</h1>
+    <button id="employee">Get All Employees</button>
+    <output></output>
+    <script>
+        (async () => {
+            const output = document.querySelector('output');
+            const req = await fetch("/api/employee", {
+                method: "GET"
+            })
+            const res = await req.json()
+            for (let elm of res) {
+                output.innerHTML += `<p>${elm.name} => ${elm.name}</p>`;
+            }
+        })()
+    </script>
+</body>
+</html>

@@ -16,7 +16,7 @@ namespace dotnet_webapi_demo_01_christenzarif.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<DepartmentNameDTO>>> GetDepartments()
+        public async Task<ActionResult<List<DepartmentNameDTO>>> GetDepartmentsWithName()
         {
             List<DepartmentNameDTO> nameDTO = await _department.GetDepartment();
             if (nameDTO is not null)

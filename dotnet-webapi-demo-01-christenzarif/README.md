@@ -15,3 +15,11 @@ Microsoft.EntityFrameworkCore.Tools
 ```bash
 Microsoft.AspNetCore.Mvc.NewtonsoftJson
 ```
+
+```bash
+Microsoft.AspNetCore.Identity.EntityFrameworkCore
+```
+
+```bash
+Microsoft.AspNetCore.Authentication.JwtBearer
+```

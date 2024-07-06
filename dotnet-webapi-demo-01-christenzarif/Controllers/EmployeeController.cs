@@ -4,12 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using dotnet_webapi_demo_01_christenzarif.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dotnet_webapi_demo_01_christenzarif.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    [Authorize(Roles = "Admin")]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployee _employee;

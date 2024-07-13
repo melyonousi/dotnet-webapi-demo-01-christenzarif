@@ -10,9 +10,22 @@ namespace dotnet_webapi_demo_01_christenzarif.Controllers
     public class DepartmentController : ControllerBase
     {
         private readonly IDepartment _department;
-        public DepartmentController(IDepartment department)
+        private readonly IConfiguration configuration;
+
+        public DepartmentController(IDepartment department, IConfiguration configuration)
         {
             _department = department;
+            this.configuration = configuration;
+        }
+
+        [HttpGet("myvar")]
+        public IActionResult GetVariable()
+        {
+            return Ok(new
+            {
+                fromRenderVar = Environment.GetEnvironmentVariable("myAppVar"),
+                fromRenderVarSettings = configuration["App:myAppVar"]
+            });
         }
 
         [HttpGet]

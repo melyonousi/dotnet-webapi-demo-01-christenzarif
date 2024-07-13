@@ -19,9 +19,6 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./dotnet-webapi-demo-01-christenzarif.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-ENV 
- myAppVar "myAppVar test"
-
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .

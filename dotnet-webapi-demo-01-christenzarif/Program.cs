@@ -66,7 +66,8 @@ namespace dotnet_webapi_demo_01_christenzarif
                 opt.Password.RequireUppercase = false;
             })
             .AddEntityFrameworkStores<DataContext>()
-            .AddDefaultTokenProviders();
+            .AddDefaultTokenProviders()
+            .AddApiEndpoints();
 
             //[Authorize] check JWT Token
             builder.Services.AddAuthentication(opt =>

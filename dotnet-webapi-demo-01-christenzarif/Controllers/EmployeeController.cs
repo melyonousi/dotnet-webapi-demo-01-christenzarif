@@ -15,9 +15,22 @@ namespace dotnet_webapi_demo_01_christenzarif.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployee _employee;
-        public EmployeeController(IEmployee employee)
+        private readonly IConfiguration configuration;
+
+        public EmployeeController(IEmployee employee, IConfiguration configuration)
         {
             _employee = employee;
+            this.configuration = configuration;
+        }
+
+        [HttpGet]
+        public IActionResult GetVariable()
+        {
+            return Ok(new
+            {
+                fromRenderVar = Environment.GetEnvironmentVariable("myAppVar"),
+                fromRenderVarSettings = configuration["App:myAppVar"]
+            });
         }
 
         [HttpGet]

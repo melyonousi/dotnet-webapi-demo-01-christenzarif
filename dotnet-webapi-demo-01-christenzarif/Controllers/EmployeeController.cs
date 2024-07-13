@@ -23,7 +23,7 @@ namespace dotnet_webapi_demo_01_christenzarif.Controllers
             this.configuration = configuration;
         }
 
-        [HttpGet]
+        [HttpGet("myvar")]
         public IActionResult GetVariable()
         {
             return Ok(new

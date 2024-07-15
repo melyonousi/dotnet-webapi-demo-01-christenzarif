@@ -95,7 +95,7 @@ namespace dotnet_webapi_demo_01_christenzarif
                 options.AddPolicy(corses,
                                   policy =>
                                   {
-                                      policy.WithOrigins(builder.Configuration.GetSection("Cors").Get<string[]>()!);
+                                      policy.WithOrigins(builder.Configuration.GetSection("Cors").Get<string>()!);
                                   });
             });
 

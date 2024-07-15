@@ -24,7 +24,7 @@ namespace dotnet_webapi_demo_01_christenzarif.Controllers
             return Ok(new
             {
                 fromRenderVar = Environment.GetEnvironmentVariable("myAppVar"),
-                fromRenderVarSettings = configuration["App:myAppVar"]
+                fromRenderVarSettings = configuration["myAppVar"]
             });
         }
 
